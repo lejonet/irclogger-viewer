@@ -1,2 +1,0 @@
-ALTER TABLE `irclog` ADD COLUMN oper_nick VARCHAR(40);
-ALTER TABLE `irclog` ADD COLUMN payload TEXT;
