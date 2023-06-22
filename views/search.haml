@@ -26,5 +26,5 @@
         - if current_date != message_date
           - current_date = message_date
           %h4= current_date
-        = haml :_message, locals: { message: message, mode: :search }
+        != haml :_message, locals: { message: message, mode: :search }
 

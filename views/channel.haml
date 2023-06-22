@@ -23,10 +23,10 @@
 
   %div{class: "log-messages with-panel"}
     - if @topic
-      = haml :_message, locals: { message: @topic, mode: :topic }
+      != haml :_message, locals: { message: @topic, mode: :topic }
 
     - @messages.each do |message|
-      = haml :_message, locals: { message: message, mode: :normal }
+      != haml :_message, locals: { message: message, mode: :normal }
 
     - if @messages.empty?
       There are no messages recorded for #{@date}.

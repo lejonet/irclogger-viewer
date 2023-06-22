@@ -31,7 +31,7 @@
     %section#sidebar
       %section#calendar
         %pre.clock= Time.now.gmtime.strftime('%H:%M UTC')
-        %pre= calendar(@channel, @date, !@channel.nil?)
+        %pre!= calendar(@channel, @date, !@channel.nil?)
 
       - if @channel
         %section#options
@@ -51,6 +51,4 @@
             %li{class: "#{"current" if channel == @channel}"}
               %a{href: channel_url(channel)}= channel
 
-    = yield
-
-    = erb :_analytics
+    != yield
