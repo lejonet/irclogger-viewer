@@ -1,3 +1,7 @@
+NOTICE
+======
+This fork only contains the web interface, not the irclogger. There has been some minor fixes to the haml files to make the web interface work.
+
 irclogger
 =========
 
