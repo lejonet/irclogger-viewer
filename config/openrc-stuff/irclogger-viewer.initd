@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+depend() {
+	need net
+	use dns
+	after sssd
+}
+name="whitequark's irclogger-viewer"
+description="Webinterface to view IRC logs"
+command_user="irclog:irclog"
+command="/usr/bin/bundle"
+command_args="exec thin -C ${viewer_dir}/config/thin.yml -c ${viewer_dir} start"
+pidfile="${viewer_dir}/tmp/viewer.pid"
+start_stop_daemon_args="--env BUNDLE_GEMFILE=\"${viewer_dir}/Gemfile\""
+
