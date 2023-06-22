@@ -2,6 +2,8 @@ NOTICE
 ======
 This fork only contains the web interface, not the irclogger. There has been some minor fixes to the haml files to make the web interface work with Ruby 3.0.
 
+For a python-based irc logger bot, look at [this repository](https://github.com/lejonet/irc-logger-bot).
+
 irclogger
 =========
 
