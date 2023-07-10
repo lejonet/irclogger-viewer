@@ -51,6 +51,11 @@ QUERY
       haml :'help/search'
     end
 
+    def sass(template, options = {}, locals = {})
+      options.merge! :layout => false, :default_content_type => :css
+      render :sass, template, options, locals
+    end
+
     get '/style-dark.css' do
       sass :'style-dark'
     end
