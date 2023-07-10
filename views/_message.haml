@@ -20,6 +20,6 @@
   - elsif message.me_tell?
     = message.nick
 
-  = format_message(message.line, (@nicks if message.talk?))
+  != format_message(escape_html(message.line), (@nicks if message.talk?))
 
   %br
