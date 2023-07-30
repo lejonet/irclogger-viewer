@@ -18,7 +18,7 @@
     %span{class: nick_class(message.nick)}>= message.nick
     &gt;
   - elsif message.me_tell?
-    = message.nick
+    = "* #{message.nick}"
 
   != format_message(escape_html(message.line), (@nicks if message.talk?))
 
