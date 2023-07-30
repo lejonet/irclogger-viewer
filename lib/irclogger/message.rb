@@ -14,15 +14,15 @@ class Message < Sequel::Model(:irclog)
   end
 
   def me_tell?
-    nick && nick[0] == '*'
+    opcode == "action"
   end
 
   def talk?
-    opcode.nil? && !me_tell?
+    opcode == "msg"
   end
 
   def info?
-    !opcode.nil?
+    opcode != "msg" && opcode != "action"
   end
 
   def to_s
