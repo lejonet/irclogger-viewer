@@ -55,7 +55,7 @@ class Message < Sequel::Model(:irclog)
 
   def self.check_by_channel_and_date(channel, date)
     find_by_channel_and_date(channel, date).
-        filter('opcode is null').
+        filter("opcode = 'msg'").
         count > 0
   end
 
@@ -98,7 +98,7 @@ class Message < Sequel::Model(:irclog)
     when :mysql
       filter('match (nick, line) against (? in boolean mode)', query).
           filter(:channel => channel).
-          filter('opcode is null').
+          filter("opcode = 'msg'").
           order(:timestamp).reverse
     when :postgres
       # postgres' query planner is dumb as a brick and will use any index
@@ -106,7 +106,7 @@ class Message < Sequel::Model(:irclog)
       filter("to_tsvector('english', nick || ' ' || line) @@ " \
              "plainto_tsquery('english', ?)", query).
           filter("channel||'' = ?", channel).
-          filter('opcode is null').
+          filter("opcode = 'msg'").
           order(Sequel.lit("timestamp+0")).reverse
     else
       raise NotImplementedError
@@ -115,7 +115,7 @@ class Message < Sequel::Model(:irclog)
 
   def self.find_by_channel_and_nick(channel, query)
     order(:timestamp).reverse.filter(:channel => channel).
-        filter('opcode is null').
+        filter("opcode = 'msg'").
         filter('nick like ?', query.strip + "%")
   end
 

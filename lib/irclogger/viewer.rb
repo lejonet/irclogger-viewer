@@ -162,7 +162,7 @@ QUERY
         response['Content-Type'] = 'text/plain; charset=utf-8'
 
         if params[:quiet]
-          @messages = @messages.filter('opcode is null')
+          @messages = @messages.filter("opcode = 'msg'")
         end
 
         @messages.map(&:to_s).join("\n")
